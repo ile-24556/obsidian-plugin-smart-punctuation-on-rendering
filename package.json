@@ -1,0 +1,15 @@
+{
+  "name": "obsidian-smart-punctuation-on-rendering",
+  "version": "0.1.0",
+  "description": "An Obsidian plugin that renders quotes as curly quotes, two dashes as an em dash, etc.",
+  "homepage": "https://github.com/ile-24556/obsidian-smart-punctuation-on-rendering",
+  "license": "MIT",
+  "author": "ile-24556",
+  "type": "module",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
