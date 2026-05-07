@@ -1,4 +1,7 @@
 {
+  "json": {
+    "jsonTrailingCommaFiles": ["tsconfig.json"],
+  },
   "markdown": {
     "emphasisKind": "asterisks",
   },
