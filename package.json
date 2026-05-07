@@ -8,13 +8,15 @@
   "type": "module",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/main.ts --outfile=main.js --bundle --platform=node --target=es2025 --external:obsidian"
   },
   "dependencies": {
     "obsidian": "1.12.3"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "esbuild": "0.28.0",
     "eslint": "10.3.0",
     "eslint-plugin-obsidianmd": "0.2.9",
     "typescript": "6.0.3",
