@@ -10,6 +10,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "obsidian": "1.12.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.3.0",
+    "eslint-plugin-obsidianmd": "0.2.9",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.59.2"
+  }
 }
