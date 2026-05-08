@@ -39,8 +39,8 @@ const ALL_PUNCTUATIONS: Pattern[] = [
   },
   {
     char: "horizontal ellipsis",
-    pattern: /(^|[^.])\.\.\.($|[^.])/g,
-    replacement: "$1\u2026$2",
+    pattern: /\.\.\./g,
+    replacement: "\u2026",
   },
 ];
 
