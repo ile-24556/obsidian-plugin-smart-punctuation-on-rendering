@@ -47,7 +47,8 @@ const ALL_PUNCTUATIONS: Pattern[] = [
 export default class ExamplePlugin extends Plugin {
   override async onload() {
     this.registerMarkdownPostProcessor((element) => {
-      for (const child of element.children) {
+      const children = element.findAll("p,table");
+      for (const child of children) {
         let text = child.innerHTML;
         for (const e of ALL_PUNCTUATIONS) {
           text = text.replaceAll(e.pattern, e.replacement);
