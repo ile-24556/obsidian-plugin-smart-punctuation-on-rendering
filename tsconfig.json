@@ -10,7 +10,7 @@
     // Environment Settings
     "module": "es2022",
     "target": "es6",
-    "lib": ["DOM","ES2022"],
+    "lib": ["DOM", "ES2022"],
 
     // Other Outputs
     "sourceMap": false,
