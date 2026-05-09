@@ -18,24 +18,19 @@ const ALL_PUNCTUATIONS: Pattern[] = [
     replacement: "$1\u2014$2",
   },
   {
-    char: "left single quotation mark",
-    pattern: /(^|[ ])'([^ ])/g,
-    replacement: "$1\u2018$2",
+    char: "single quotation marks",
+    pattern: /(^|\s|>)'([^']*)'($|\s|<)/g,
+    replacement: "$1\u2018$2\u2019$3",
   },
   {
     char: "right single quotation mark",
-    pattern: /([^ ])'/g,
+    pattern: /([^ >=])'/g,
     replacement: "$1\u2019",
   },
   {
-    char: "left double quotation mark",
-    pattern: /(^|[ ])"([^ ])/g,
-    replacement: "$1\u201C$2",
-  },
-  {
-    char: "right double quotation mark",
-    pattern: /([^ ])"/g,
-    replacement: "$1\u201D",
+    char: "double quotation marks",
+    pattern: /(^|\s|>)"([^"]*)"($|\s|<)/g,
+    replacement: "$1\u201C$2\u201D$3",
   },
   {
     char: "horizontal ellipsis",
@@ -48,7 +43,7 @@ export default class ExamplePlugin extends Plugin {
   override async onload() {
     this.registerMarkdownPostProcessor((element) => {
       let text = element.innerHTML;
-      if (text.includes("</svg>") || text.includes("</code>")) {
+      if (text.includes("</code>")) {
         return;
       }
       for (const e of ALL_PUNCTUATIONS) {
