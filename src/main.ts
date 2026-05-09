@@ -2,20 +2,30 @@ import { Plugin } from "obsidian";
 
 interface Pattern {
   char: string;
-  pattern: RegExp;
+  pattern: string | RegExp;
   replacement: string;
 }
 
 const ALL_PUNCTUATIONS: Pattern[] = [
   {
-    char: "en dash",
-    pattern: /(^|[^-])--([^-]|$)/g,
-    replacement: "$1–$2",
+    char: "two em dashes",
+    pattern: "------",
+    replacement: "——",
+  },
+  {
+    char: "two en dashes",
+    pattern: "----",
+    replacement: "––",
   },
   {
     char: "em dash",
-    pattern: /(^|[^-])---([^-]|$)/g,
-    replacement: "$1—$2",
+    pattern: "---",
+    replacement: "—",
+  },
+  {
+    char: "en dash",
+    pattern: "--",
+    replacement: "–",
   },
   {
     char: "single quotation marks",
