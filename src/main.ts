@@ -10,32 +10,32 @@ const ALL_PUNCTUATIONS: Pattern[] = [
   {
     char: "en dash",
     pattern: /(^|[^-])--([^-]|$)/g,
-    replacement: "$1\u2013$2",
+    replacement: "$1–$2",
   },
   {
     char: "em dash",
     pattern: /(^|[^-])---([^-]|$)/g,
-    replacement: "$1\u2014$2",
+    replacement: "$1—$2",
   },
   {
     char: "single quotation marks",
     pattern: /(^|\s|>)'([^']*)'($|\s|<)/g,
-    replacement: "$1\u2018$2\u2019$3",
+    replacement: "$1‘$2’$3",
   },
   {
     char: "right single quotation mark",
     pattern: /([^ >=])'/g,
-    replacement: "$1\u2019",
+    replacement: "$1’",
   },
   {
     char: "double quotation marks",
     pattern: /(^|\s|>)"([^"]*)"($|\s|<)/g,
-    replacement: "$1\u201C$2\u201D$3",
+    replacement: "$1“$2”$3",
   },
   {
     char: "horizontal ellipsis",
     pattern: /\.\.\./g,
-    replacement: "\u2026",
+    replacement: "…",
   },
 ];
 
