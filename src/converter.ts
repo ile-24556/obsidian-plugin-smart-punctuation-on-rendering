@@ -27,17 +27,17 @@ const ALL_PUNCTUATIONS: Pattern[] = [
   },
   {
     char: "single quotation marks",
-    pattern: /(^|\s|>|[,-.–—])'([^']*)'($|\s|<|[,-.–—])/g,
+    pattern: /(^|\s|>|[!-/:;?[-`{-~–-”])'([^']*?)'($|\s|<|[!-/:;?[-`{-~–-”])/g,
     replacement: "$1‘$2’$3",
   },
   {
     char: "right single quotation mark",
-    pattern: /([^ >=])'/g,
+    pattern: /([^ =])'/g,
     replacement: "$1’",
   },
   {
     char: "double quotation marks",
-    pattern: /(^|\s|>|[,-.–—])"([^"]*)"($|\s|<|[,-.–—])/g,
+    pattern: /(^|\s|>|[!-/:;?[-`{-~–-”])"([^"]*?)"($|\s|<|[!-/:;?[-`{-~–-”])/g,
     replacement: "$1“$2”$3",
   },
   {
@@ -52,7 +52,8 @@ export function convert(text: string): string {
     return text;
   }
   for (const e of ALL_PUNCTUATIONS) {
-    text = text.replaceAll(e.pattern, e.replacement);
+    // Run twice for regex match overlaps e.g. `'a' 'b'`
+    text = text.replaceAll(e.pattern, e.replacement).replaceAll(e.pattern, e.replacement);
   }
   return text;
 }
