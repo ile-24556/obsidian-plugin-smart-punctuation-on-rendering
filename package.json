@@ -10,7 +10,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "node esbuild.config.mjs watch",
-    "build": "node esbuild.config.mjs"
+    "build": "node esbuild.config.mjs",
+    "prepare": "husky",
+    "format:husky": "dprint fmt --fail-on-change"
   },
   "dependencies": {
     "obsidian": "1.12.3"
@@ -20,6 +22,7 @@
     "esbuild": "0.28.0",
     "eslint": "10.3.0",
     "eslint-plugin-obsidianmd": "0.2.9",
+    "husky": "^9.1.7",
     "typescript": "6.0.3",
     "typescript-eslint": "8.59.2"
   }
