@@ -69,3 +69,8 @@ export function convert(text: string): string {
   }
   return text;
 }
+
+export function modifyElement(element: HTMLElement) {
+  // eslint-disable-next-line no-unsanitized/property, @microsoft/sdl/no-inner-html
+  element.innerHTML = convert(element.innerHTML);
+}
