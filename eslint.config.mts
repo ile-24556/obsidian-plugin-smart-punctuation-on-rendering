@@ -7,7 +7,6 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig(
   globalIgnores([
-    "coverage/",
     "esbuild.config.mjs",
     "eslint.config.mts",
     "jest.config.ts",
