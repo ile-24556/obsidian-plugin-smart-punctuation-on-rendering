@@ -59,6 +59,7 @@ export default class ExamplePlugin extends Plugin {
       for (const e of ALL_PUNCTUATIONS) {
         text = text.replaceAll(e.pattern, e.replacement);
       }
+      // eslint-disable-next-line no-unsanitized/property, @microsoft/sdl/no-inner-html
       element.innerHTML = text;
     });
   }
