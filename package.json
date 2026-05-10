@@ -12,7 +12,8 @@
     "watch": "node esbuild.config.mjs watch",
     "build": "node esbuild.config.mjs",
     "prepare": "husky",
-    "format:husky": "dprint fmt --fail-on-change"
+    "format:husky": "dprint fmt --fail-on-change",
+    "lint": "eslint ."
   },
   "dependencies": {
     "obsidian": "1.12.3"
@@ -23,6 +24,7 @@
     "eslint": "10.3.0",
     "eslint-plugin-obsidianmd": "0.2.9",
     "husky": "^9.1.7",
+    "jiti": "2.7.0",
     "typescript": "6.0.3",
     "typescript-eslint": "8.59.2"
   }
