@@ -89,6 +89,19 @@ describe("converter", () => {
       //   input: "<p>No ellipses\\.\\.\\.</p>",
       //   output: "<p>No ellipses...</p>",
       // },
+
+      // Obsidian always uses double quotes even if source uses single quotes
+      {
+        description: "Preserve double-quoted attributes",
+        input: "<span class=\"red\" style=\"color: red\"></span>",
+        output: "<span class=\"red\" style=\"color: red\"></span>",
+      },
+
+      {
+        description: "Preserve inline code content",
+        input: "en--en<code>en--en</code>",
+        output: "en--en<code>en--en</code>",
+      },
     ];
 
     for (const c of cases) {
