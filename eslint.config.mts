@@ -9,6 +9,7 @@ export default defineConfig(
   globalIgnores([
     "esbuild.config.mjs",
     "eslint.config.mts",
+    "jest.config.ts",
     "main.js",
     "version-bump.mjs",
   ]),

@@ -13,18 +13,23 @@
     "format:check": "dprint fmt --fail-on-change",
     "lint": "eslint .",
     "watch": "tsc -noEmit && node esbuild.config.mjs watch",
-    "build": "tsc -noEmit && node esbuild.config.mjs"
+    "build": "tsc -noEmit && node esbuild.config.mjs",
+    "test": "jest"
   },
   "dependencies": {
     "obsidian": "1.12.3"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@types/jest": "30.0.0",
     "esbuild": "0.28.0",
     "eslint": "10.3.0",
     "eslint-plugin-obsidianmd": "0.2.9",
     "husky": "^9.1.7",
+    "jest": "30.4.2",
+    "jest-environment-jsdom": "30.4.1",
     "jiti": "2.7.0",
+    "ts-jest": "29.4.9",
     "typescript": "6.0.3",
     "typescript-eslint": "8.59.2"
   }
