@@ -37,5 +37,9 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+
+    // Jest
+    "esModuleInterop": true,
+    "ignoreDeprecations": "6.0",
   },
 }
