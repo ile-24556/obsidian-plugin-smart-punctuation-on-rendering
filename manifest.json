@@ -1,6 +1,6 @@
 {
   "id": "obsidian-smart-punctuation-on-rendering",
-  "name": "smart punctuation on rendering",
+  "name": "Smart Punctuation on Rendering",
   "version": "0.1.0",
   "description": "Renders quotes as curly quotes, two dashes as an em dash, etc.",
   "author": "ile-24556",
