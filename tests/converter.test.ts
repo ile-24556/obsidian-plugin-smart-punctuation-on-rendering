@@ -1,5 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-import { convert } from "../src/converter";
+import { convert, modifyElement } from "../src/converter";
 
 describe("converter", () => {
   describe("convert()", () => {
@@ -96,12 +96,6 @@ describe("converter", () => {
         input: "<span class=\"red\" style=\"color: red\"></span>",
         output: "<span class=\"red\" style=\"color: red\"></span>",
       },
-
-      {
-        description: "Preserve inline code content",
-        input: "en--en<code>en--en</code>",
-        output: "en--en<code>en--en</code>",
-      },
     ];
 
     for (const c of cases) {
@@ -109,5 +103,21 @@ describe("converter", () => {
         expect(convert(c.input)).toBe(c.output);
       });
     }
+  });
+
+  describe("modifyElement()", () => {
+    test("Preserve inline code", () => {
+      const e = document.createElement("code");
+      e.innerText = "en--en";
+      modifyElement(e);
+      expect(e.innerText).toBe("en--en");
+    });
+
+    test("Preserve inline code content in block", () => {
+      const div = document.createElement("div");
+      div.innerHTML = "<p><code>en--en</code> → en--en</p>";
+      modifyElement(div);
+      expect(div.innerHTML).toBe("<p><code>en--en</code> → en–en</p>");
+    });
   });
 });

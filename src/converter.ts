@@ -57,9 +57,6 @@ const ALL_PUNCTUATIONS: Pattern[] = [
 ];
 
 export function convert(text: string): string {
-  if (text.includes("</code>")) {
-    return text;
-  }
   for (const e of ALL_PUNCTUATIONS) {
     text = text.replaceAll(e.pattern, e.replacement);
     if (e.potentialOverlappedMatches) {
@@ -71,6 +68,26 @@ export function convert(text: string): string {
 }
 
 export function modifyElement(element: HTMLElement) {
+  const originalCodeTexts: string[] = [];
+  for (const c of element.querySelectorAll("code")) {
+    // Somehow Jest fails if I use `.innerText` instead of `.innerHTML`.
+    // On Obsidian, both properties work fine.
+    originalCodeTexts.push(c.innerHTML);
+  }
+
   // eslint-disable-next-line no-unsanitized/property, @microsoft/sdl/no-inner-html
   element.innerHTML = convert(element.innerHTML);
+
+  let i = 0;
+  for (const c of element.querySelectorAll("code")) {
+    const it = originalCodeTexts[i]!;
+    if (it == null) {
+      console.error(`originalCodeTexts[${i}] is not available`);
+      continue;
+    }
+    // Same as `originalCodeTexts.push(c.innerHTML)` above.
+    // eslint-disable-next-line no-unsanitized/property, @microsoft/sdl/no-inner-html
+    c.innerHTML = it;
+    i++;
+  }
 }
