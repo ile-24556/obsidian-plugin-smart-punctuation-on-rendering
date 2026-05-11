@@ -96,6 +96,12 @@ describe("converter", () => {
         input: "<span class=\"red\" style=\"color: red\"></span>",
         output: "<span class=\"red\" style=\"color: red\"></span>",
       },
+
+      {
+        description: "Preserve CSS variables in style attributes",
+        input: "<span style=\"color: var(--red)\"></span>",
+        output: "<span style=\"color: var(--red)\"></span>",
+      },
     ];
 
     for (const c of cases) {

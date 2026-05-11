@@ -26,8 +26,8 @@ const ALL_PUNCTUATIONS: Pattern[] = [
   },
   {
     char: "en dash",
-    pattern: "--",
-    replacement: "–",
+    pattern: /(^|[^(])--/g,
+    replacement: "$1–",
     potentialOverlappedMatches: false,
   },
   {
