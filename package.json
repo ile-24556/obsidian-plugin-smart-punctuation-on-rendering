@@ -1,7 +1,7 @@
 {
   "name": "obsidian-smart-punctuation-on-rendering",
   "version": "0.1.0",
-  "description": "An Obsidian plugin that Renders quotes as curly quotes, two dashes as an em dash, etc. in reading view.",
+  "description": "An Obsidian plugin that renders ASCII punctuation characters in typographic forms in reading view.",
   "homepage": "https://github.com/ile-24556/obsidian-smart-punctuation-on-rendering",
   "license": "MIT",
   "author": "ile-24556",
