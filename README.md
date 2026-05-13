@@ -32,7 +32,7 @@ Even the notes you wrote before introducing Smart Typography will be rendered as
 
 Additionally, your system may have relevant settings as [macOS does].
 
-[Smart Typography]: https://github.com/mgmeyers/obsidian-smart-typography
+[Smart Typography]: https://community.obsidian.md/plugins/obsidian-smart-typography
 [macOS does]: https://support.apple.com/guide/mac-help/mh35735/mac
 
 ## Acknowledgement
