@@ -26,13 +26,12 @@ Renders ASCII punctuation characters in typographic forms, so you don’t have t
 
 ## Alternatives
 
-If you want to replace text when you type, consider using [Smart Typography] plugin.
+If you want to replace text when you type, consider using another plugin.
 Of course you can use both plugins:
 Even the notes you wrote before introducing Smart Typography will be rendered as you wish.
 
 Additionally, your system may have relevant settings as [macOS does].
 
-[Smart Typography]: https://community.obsidian.md/plugins/obsidian-smart-typography
 [macOS does]: https://support.apple.com/guide/mac-help/mh35735/mac
 
 ## Acknowledgement
