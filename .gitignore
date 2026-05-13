@@ -1,0 +1,14 @@
+# macOS Finder
+.DS_Store
+
+# Sourcemaps
+*.map
+
+# Obsidian user settings
+data.json
+
+# Compiled code for releasing
+main.js
+
+# npm
+node_modules
