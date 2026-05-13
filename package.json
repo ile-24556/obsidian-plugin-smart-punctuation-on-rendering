@@ -1,6 +1,6 @@
 {
   "name": "obsidian-smart-punctuation-on-rendering",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "An Obsidian plugin that renders ASCII punctuation characters in typographic forms in reading view.",
   "homepage": "https://github.com/ile-24556/obsidian-smart-punctuation-on-rendering",
   "license": "MIT",
