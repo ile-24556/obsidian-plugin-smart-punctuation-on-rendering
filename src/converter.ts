@@ -1,3 +1,5 @@
+import DOMPurify from "dompurify";
+
 interface Pattern {
   char: string;
   pattern: string | RegExp;
@@ -74,9 +76,7 @@ export function modifyElement(element: HTMLElement) {
     // On Obsidian, both properties work fine.
     originalCodeTexts.push(c.innerHTML);
   }
-
-  // eslint-disable-next-line no-unsanitized/property, @microsoft/sdl/no-inner-html
-  element.innerHTML = convert(element.innerHTML);
+  element.replaceChildren(stringToCleanDOMFragment(convert(element.innerHTML)));
 
   let i = 0;
   for (const c of element.querySelectorAll("code")) {
@@ -86,8 +86,12 @@ export function modifyElement(element: HTMLElement) {
       continue;
     }
     // Same as `originalCodeTexts.push(c.innerHTML)` above.
-    // eslint-disable-next-line no-unsanitized/property, @microsoft/sdl/no-inner-html
-    c.innerHTML = it;
+    c.replaceChildren(stringToCleanDOMFragment(it));
     i++;
   }
+}
+
+function stringToCleanDOMFragment(input: string): DocumentFragment {
+  // I was not able to use `obsidian.sanitizeHTMLToDom()` with Jest, so pick `DOMPurify`.
+  return DOMPurify.sanitize(input, { RETURN_DOM_FRAGMENT: true });
 }
