@@ -72,9 +72,7 @@ export function convert(text: string): string {
 export function modifyElement(element: HTMLElement) {
   const originalCodeTexts: string[] = [];
   for (const c of element.querySelectorAll("code")) {
-    // Somehow Jest fails if I use `.innerText` instead of `.innerHTML`.
-    // On Obsidian, both properties work fine.
-    originalCodeTexts.push(c.innerHTML);
+    originalCodeTexts.push(c.textContent);
   }
   element.replaceChildren(stringToCleanDOMFragment(convert(element.innerHTML)));
 
@@ -85,7 +83,6 @@ export function modifyElement(element: HTMLElement) {
       console.error(`originalCodeTexts[${i}] is not available`);
       continue;
     }
-    // Same as `originalCodeTexts.push(c.innerHTML)` above.
     c.replaceChildren(stringToCleanDOMFragment(it));
     i++;
   }
