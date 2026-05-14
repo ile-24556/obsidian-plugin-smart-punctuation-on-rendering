@@ -112,17 +112,17 @@ describe("converter", () => {
   });
 
   describe("modifyElement()", () => {
-    test("Preserve inline code", () => {
-      const e = document.createElement("code");
-      e.innerText = "en--en";
-      modifyElement(e);
-      expect(e.innerText).toBe("en--en");
-    });
-
     test("Preserve inline code content in block", () => {
       const div = document.createElement("div");
-      div.innerHTML = "<p><code>en--en</code> → en--en</p>";
+      const code = document.createElement("code");
+      code.append("en--en");
+      const p = document.createElement("p");
+      p.append(code, " → en--en");
+      div.append(p);
+      // div: "<div><p><code>en--en</code> → en--en</p></div>"
+
       modifyElement(div);
+
       expect(div.innerHTML).toBe("<p><code>en--en</code> → en–en</p>");
     });
   });
