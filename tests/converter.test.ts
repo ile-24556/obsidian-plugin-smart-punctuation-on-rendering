@@ -1,5 +1,7 @@
-import { describe, expect, test } from "@jest/globals";
+import { describe, expect, jest, test } from "@jest/globals";
 import { convert, modifyElement } from "../src/converter";
+
+jest.mock("obsidian");
 
 describe("converter", () => {
   describe("convert()", () => {

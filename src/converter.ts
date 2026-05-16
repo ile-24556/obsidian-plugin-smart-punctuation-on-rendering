@@ -1,4 +1,4 @@
-import DOMPurify from "dompurify";
+import { sanitizeHTMLToDom } from "obsidian";
 
 interface Pattern {
   char: string;
@@ -74,7 +74,7 @@ export function modifyElement(element: HTMLElement) {
   for (const c of element.querySelectorAll("code")) {
     originalCodeTexts.push(c.innerHTML);
   }
-  element.replaceChildren(stringToCleanDOMFragment(convert(element.innerHTML)));
+  element.replaceChildren(sanitizeHTMLToDom(convert(element.innerHTML)));
 
   let i = 0;
   for (const c of element.querySelectorAll("code")) {
@@ -83,12 +83,7 @@ export function modifyElement(element: HTMLElement) {
       console.error(`originalCodeTexts[${i}] is not available`);
       continue;
     }
-    c.replaceChildren(stringToCleanDOMFragment(it));
+    c.replaceChildren(sanitizeHTMLToDom(it));
     i++;
   }
-}
-
-function stringToCleanDOMFragment(input: string): DocumentFragment {
-  // I was not able to use `obsidian.sanitizeHTMLToDom()` with Jest, so pick `DOMPurify`.
-  return DOMPurify.sanitize(input, { RETURN_DOM_FRAGMENT: true });
 }
