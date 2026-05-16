@@ -72,7 +72,7 @@ export function convert(text: string): string {
 export function modifyElement(element: HTMLElement) {
   const originalCodeTexts: string[] = [];
   for (const c of element.querySelectorAll("code")) {
-    originalCodeTexts.push(c.textContent);
+    originalCodeTexts.push(c.innerHTML);
   }
   element.replaceChildren(stringToCleanDOMFragment(convert(element.innerHTML)));
 

@@ -125,5 +125,19 @@ describe("converter", () => {
 
       expect(div.innerHTML).toBe("<p><code>en--en</code> → en–en</p>");
     });
+
+    test("Escape HTML tag in inline code", () => {
+      const div = document.createElement("div");
+      const code = document.createElement("code");
+      code.append("<hr>");
+      const p = document.createElement("p");
+      p.append(code);
+      div.append(p);
+      // div: "<div><p><code><hr></code></p></div>"
+
+      modifyElement(div);
+
+      expect(div.innerHTML).toBe("<p><code>&lt;hr&gt;</code></p>");
+    });
   });
 });
