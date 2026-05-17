@@ -2,7 +2,7 @@ import json
 import re
 import subprocess
 import sys
-from logging import basicConfig, getLogger
+from logging import Logger, basicConfig, getLogger
 from pathlib import Path
 
 
@@ -37,6 +37,9 @@ def main():
 
     change_version_in_json(new_version, Path("manifest.json"))
     change_version_in_json(new_version, Path("package.json"))
+
+    update_versions_json(logger)
+
     subprocess.run(["npm", "run", "format"])
 
 
@@ -45,6 +48,29 @@ def text_is_valid_semver(
     pat=re.compile(r"(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)"),
 ) -> bool:
     return pat.fullmatch(text) is not None
+
+
+def update_versions_json(logger: Logger):
+    manifest: dict[str, str] = json.loads(
+        Path("manifest.json").read_text(encoding="utf_8")
+    )
+
+    try:
+        minAppVersion = manifest["minAppVersion"]
+    except KeyError:
+        logger.error("minAppVersion is not specified in 'manifest.json'")
+        return
+
+    versions: dict[str, str] = json.loads(
+        Path("versions.json").read_text(encoding="utf_8")
+    )
+
+    if minAppVersion not in versions.values():
+        versions[manifest["version"]] = minAppVersion
+        Path("versions.json").write_text(
+            json.dumps(versions, ensure_ascii=False, indent=2),
+            encoding="utf_8",
+        )
 
 
 if __name__ == "__main__":

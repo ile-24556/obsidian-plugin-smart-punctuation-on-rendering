@@ -18,10 +18,11 @@ Renders ASCII punctuation characters in typographic forms, so you don’t have t
 
 - Live Preview is not supported.
 - It may break some elements.
-  - The callout title icons will be disappeared.
 - It may slow down the rendering of a huge note.
-- It cannot recognize backslash escaping e.g. `\-\-`,
-  since it receives already rendered HTML documents e.g. `--`.
+- It cannot recognize backslash escaping (e.g. `\-\-`),
+  since it receives already rendered HTML documents (`--`).
+  If you really want to avoid character replacements,
+  please use zero-width spaces (`-&ZeroWidthSpace;-`).
 - It cannot handle complex text because it uses simple regexes and is not aware of AST.
 
 ## Alternatives

@@ -1,4 +1,4 @@
-import DOMPurify from "dompurify";
+import { sanitizeHTMLToDom } from "obsidian";
 
 interface Pattern {
   char: string;
@@ -70,25 +70,26 @@ export function convert(text: string): string {
 }
 
 export function modifyElement(element: HTMLElement) {
-  const originalCodeTexts: string[] = [];
-  for (const c of element.querySelectorAll("code")) {
-    originalCodeTexts.push(c.textContent);
-  }
-  element.replaceChildren(stringToCleanDOMFragment(convert(element.innerHTML)));
-
-  let i = 0;
-  for (const c of element.querySelectorAll("code")) {
-    const it = originalCodeTexts[i]!;
-    if (it == null) {
-      console.error(`originalCodeTexts[${i}] is not available`);
-      continue;
+  // Callout icons are week to modifications including `replaceChildren()`;
+  // If this element contains a callout, modify it without touching the icon.
+  if (element.querySelector("div.callout-icon") != null) {
+    for (const e of element.querySelectorAll("div.callout-title-inner, div.callout-content")) {
+      modifyElement(e as HTMLElement);
     }
-    c.replaceChildren(stringToCleanDOMFragment(it));
-    i++;
+    return;
   }
-}
 
-function stringToCleanDOMFragment(input: string): DocumentFragment {
-  // I was not able to use `obsidian.sanitizeHTMLToDom()` with Jest, so pick `DOMPurify`.
-  return DOMPurify.sanitize(input, { RETURN_DOM_FRAGMENT: true });
+  const originalCodeElements = element.querySelectorAll("code");
+
+  element.replaceChildren(sanitizeHTMLToDom(convert(element.innerHTML)));
+
+  // Restore preserved inline code elements.
+  element.querySelectorAll("code").forEach((e, i) => {
+    const oe = originalCodeElements[i];
+    if (oe == null) {
+      console.error(`originalCodeElements[${i}] is not available`);
+      return;
+    }
+    e.replaceChildren(sanitizeHTMLToDom(oe.innerHTML));
+  });
 }
