@@ -70,20 +70,17 @@ export function convert(text: string): string {
 }
 
 export function modifyElement(element: HTMLElement) {
-  const originalCodeTexts: string[] = [];
-  for (const c of element.querySelectorAll("code")) {
-    originalCodeTexts.push(c.innerHTML);
-  }
+  const originalCodeElements = element.querySelectorAll("code");
+
   element.replaceChildren(sanitizeHTMLToDom(convert(element.innerHTML)));
 
-  let i = 0;
-  for (const c of element.querySelectorAll("code")) {
-    const it = originalCodeTexts[i]!;
-    if (it == null) {
-      console.error(`originalCodeTexts[${i}] is not available`);
-      continue;
+  // Restore preserved inline code elements.
+  element.querySelectorAll("code").forEach((e, i) => {
+    const oe = originalCodeElements[i];
+    if (oe == null) {
+      console.error(`originalCodeElements[${i}] is not available`);
+      return;
     }
-    c.replaceChildren(sanitizeHTMLToDom(it));
-    i++;
-  }
+    e.replaceChildren(sanitizeHTMLToDom(oe.innerHTML));
+  });
 }
