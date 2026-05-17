@@ -20,8 +20,8 @@ Renders ASCII punctuation characters in typographic forms, so you don’t have t
 - It may break some elements.
   - The callout title icons will be disappeared.
 - It may slow down the rendering of a huge note.
-- It cannot recognize backslash escaping e.g. `\-\-`,
-  since it receives already rendered HTML documents e.g. `--`.
+- It cannot recognize backslash escaping (e.g. `\-\-`),
+  since it receives already rendered HTML documents (`--`).
 - It cannot handle complex text because it uses simple regexes and is not aware of AST.
 
 ## Alternatives
