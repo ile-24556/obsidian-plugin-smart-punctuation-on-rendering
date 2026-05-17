@@ -18,7 +18,6 @@ Renders ASCII punctuation characters in typographic forms, so you don’t have t
 
 - Live Preview is not supported.
 - It may break some elements.
-  - The callout title icons will be disappeared.
 - It may slow down the rendering of a huge note.
 - It cannot recognize backslash escaping (e.g. `\-\-`),
   since it receives already rendered HTML documents (`--`).

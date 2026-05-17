@@ -70,6 +70,15 @@ export function convert(text: string): string {
 }
 
 export function modifyElement(element: HTMLElement) {
+  // Callout icons are week to modifications including `replaceChildren()`;
+  // If this element contains a callout, modify it without touching the icon.
+  if (element.querySelector("div.callout-icon") != null) {
+    for (const e of element.querySelectorAll("div.callout-title-inner, div.callout-content")) {
+      modifyElement(e as HTMLElement);
+    }
+    return;
+  }
+
   const originalCodeElements = element.querySelectorAll("code");
 
   element.replaceChildren(sanitizeHTMLToDom(convert(element.innerHTML)));
