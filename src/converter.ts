@@ -34,7 +34,7 @@ const ALL_PUNCTUATIONS: Pattern[] = [
   },
   {
     char: "single quotation marks",
-    pattern: /(^|\s|>|[!-/:;?[-`{-~–-”])'([^']*?)'($|\s|<|[!-/:;?[-`{-~–-”])/g,
+    pattern: /(^|\s|>|[!-.:;?[-`{-~–-”])'([^']*?)'($|\s|<|[!-.:;?[-`{-~–-”])/g,
     replacement: "$1‘$2’$3",
     potentialOverlappedMatches: true,
   },
@@ -46,7 +46,7 @@ const ALL_PUNCTUATIONS: Pattern[] = [
   },
   {
     char: "double quotation marks",
-    pattern: /(^|\s|>|[!-/:;?[-`{-~–-”])"([^"]*?)"($|\s|<|[!-/:;?[-`{-~–-”])/g,
+    pattern: /(^|\s|>|[!-.:;?[-`{-~–-”])"([^"]*?)"($|\s|<|[!-.:;?[-`{-~–-”])/g,
     replacement: "$1“$2”$3",
     potentialOverlappedMatches: true,
   },

@@ -104,6 +104,18 @@ describe("converter", () => {
         input: "<span style=\"color: var(--red)\"></span>",
         output: "<span style=\"color: var(--red)\"></span>",
       },
+
+      // Attribute values that end with slashes
+      {
+        description: "Link URL that does not end with a slash: negative control",
+        input: "<a href=\"https://www.example.com\" target=\"_blank\">https://www.example.com</a>",
+        output: "<a href=\"https://www.example.com\" target=\"_blank\">https://www.example.com</a>",
+      },
+      {
+        description: "Link URL that ends with a slash",
+        input: "<a href=\"https://www.example.com/\" target=\"_blank\">https://www.example.com/</a>",
+        output: "<a href=\"https://www.example.com/\" target=\"_blank\">https://www.example.com/</a>",
+      },
     ];
 
     for (const c of cases) {
