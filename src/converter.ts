@@ -70,6 +70,10 @@ export function convert(text: string): string {
 }
 
 export function modifyElement(element: HTMLElement) {
+  if (element.querySelector("pre .language-mermaid") != null) {
+    return;
+  }
+
   // Callout icons are week to modifications including `replaceChildren()`;
   // If this element contains a callout, modify it without touching the icon.
   if (element.querySelector("div.callout-icon") != null) {
