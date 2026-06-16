@@ -73,6 +73,11 @@ export function modifyElement(element: HTMLElement) {
   if (element.querySelector("pre .language-mermaid") != null) {
     return;
   }
+  for (const anchor of element.querySelectorAll("a")) {
+    if (/(--|\.\.\.|"|')/.test(anchor.href)) {
+      return;
+    }
+  }
 
   // Callout icons are week to modifications including `replaceChildren()`;
   // If this element contains a callout, modify it without touching the icon.

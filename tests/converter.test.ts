@@ -153,5 +153,19 @@ describe("converter", () => {
 
       expect(div.innerHTML).toBe("<p><code>&lt;hr&gt;</code></p>");
     });
+
+    test("Ignore element holding anchor with href containing target characters", () => {
+      const div = document.createElement("div");
+      const a = document.createElement("a");
+      a.href = "https://en--en.example.com/";
+      const p = document.createElement("p");
+      p.append(a, "en--en");
+      div.append(p);
+      // div: "<div><p><a href="https://en--en.example.com/"></a>en--en</p></div>"
+
+      modifyElement(div);
+
+      expect(div.innerHTML).toBe("<p><a href=\"https://en--en.example.com/\"></a>en--en</p>");
+    });
   });
 });
