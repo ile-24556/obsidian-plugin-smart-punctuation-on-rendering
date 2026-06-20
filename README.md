@@ -24,6 +24,10 @@ Renders ASCII punctuation characters in typographic forms, so you don’t have t
   If you really want to avoid character replacements,
   please use zero-width spaces (`-&ZeroWidthSpace;-`).
 - It cannot handle complex text because it uses simple regexes and is not aware of AST.
+  Known issues are the following:
+  - [Element containing a callout is not modified](https://github.com/ile-24556/obsidian-plugin-smart-punctuation-on-rendering/issues/10).
+  - [Element containing a Mermaid diagram is not modified](https://github.com/ile-24556/obsidian-plugin-smart-punctuation-on-rendering/issues/16).
+  - [Element holding links with URI containing specific characters are ignored](https://github.com/ile-24556/obsidian-plugin-smart-punctuation-on-rendering/issues/17).
 
 ## Alternatives
 
