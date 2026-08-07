@@ -116,6 +116,35 @@ describe("converter", () => {
         input: "<a href=\"https://www.example.com/\" target=\"_blank\">https://www.example.com/</a>",
         output: "<a href=\"https://www.example.com/\" target=\"_blank\">https://www.example.com/</a>",
       },
+
+      // A quote back should not touch a parenthesis back
+      {
+        description: "Left single quote should not touch right parenthesis",
+        input: "(foo)' bar ' baz '",
+        output: "(foo)' bar ‘ baz ’",
+      },
+      {
+        description: "Left double quote should not touch right parenthesis",
+        input: "(foo)\" bar \" baz \"",
+        output: "(foo)\" bar “ baz ”",
+      },
+      {
+        description: "Right single quote should not touch left parenthesis",
+        input: "'foo '(bar)'",
+        output: "'foo ‘(bar)’",
+      },
+      {
+        description: "Right double quote should not touch left parenthesis",
+        input: "\"foo \"(bar)\"",
+        output: "\"foo “(bar)”",
+      },
+      {
+        description: "Issue #18",
+        input:
+          "<a href=\"https://en.wikipedia.org/wiki/Us_(2019_film)\" target=\"_blank\">https://en.wikipedia.org/wiki/Us_(2019_film)</a>",
+        output:
+          "<a href=\"https://en.wikipedia.org/wiki/Us_(2019_film)\" target=\"_blank\">https://en.wikipedia.org/wiki/Us_(2019_film)</a>",
+      },
     ];
 
     for (const c of cases) {
