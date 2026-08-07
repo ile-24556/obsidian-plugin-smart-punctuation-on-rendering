@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@jest/globals": "30.4.1",
     "@types/jest": "30.0.0",
     "dompurify": "3.4.3",
     "dprint": "0.54.0",
