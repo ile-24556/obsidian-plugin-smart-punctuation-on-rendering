@@ -50,6 +50,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           readonly tag="${GITHUB_REF#refs/tags/}"
-          gh release create "$tag" --title="$tag" \
-            --draft --fail-on-no-commits --generate-notes --prerelease \
+          gh release create "$tag" \
+            --title="$tag" --draft --fail-on-no-commits --generate-notes --prerelease \
             -- main.js manifest.json
