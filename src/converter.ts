@@ -70,6 +70,9 @@ export function convert(text: string): string {
 }
 
 export function modifyElement(element: HTMLElement) {
+  if (element.querySelector("button") != null) {
+    return;
+  }
   if (element.querySelector("pre .language-mermaid") != null) {
     return;
   }
