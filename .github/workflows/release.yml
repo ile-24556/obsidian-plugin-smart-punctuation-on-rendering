@@ -51,5 +51,5 @@ jobs:
         run: |
           readonly tag="${GITHUB_REF#refs/tags/}"
           gh release create "$tag" \
-            --title="$tag" --draft --fail-on-no-commits --generate-notes \
+            --title="$tag" --draft --fail-on-no-commits --generate-notes --verify-tag \
             -- main.js manifest.json
